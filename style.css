@@ -120,6 +120,10 @@ main p {
     transition: 200ms ease;
 }
 
+.container ul {
+    columns: 3;
+}
+
 .rotate svg:last-child {
     rotate: -180deg;
 }
