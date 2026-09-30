@@ -4,6 +4,27 @@ const dl = document.getElementById("download");
 dl.addEventListener("click", downloadPatch);
 
 
+const name = "Hajimari_no_Ishi";
+
+
+async function getPatchInfo(){
+    try {
+        const info = await fetch("download/release_info.txt");
+        if (info.ok){
+            const data = await info.text();
+            const version = data.split('\n')[0].split(' ')[2];
+            const hash = data.split('\n')[5].split(' ')[1];
+            return [version, hash];
+        }
+    } catch (error) {
+        console.log(error);
+        return ["", ""];
+    }
+    return ["", ""];
+}
+
+
+
 function toggleSubMenu(button) {
     if (!button.nextElementSibling.classList.contains("show")) {
         Array.from(sidebar.getElementsByClassName("show")).forEach(ul => {
@@ -11,28 +32,25 @@ function toggleSubMenu(button) {
             ul.previousElementSibling.classList.remove("rotate");
         });
     }
-
     button.nextElementSibling.classList.toggle("show");
     button.classList.toggle("rotate");
 }
+
+const patch_info = await getPatchInfo();
+const e = document.getElementById('hash');
+e.innerText = patch_info[1];
 
 async function downloadPatch(){
     const a = document.createElement("a");
     a.style.display = 'none';
     a.href = "download/patch.zip";
-    const name = "Hajimari_no_Ishi";
-    a.download = name + ".zip";
-    try {
-        const info = await fetch("download/release_info.txt");
-        if (info.ok){
-            const data = await info.text();
-            const version = data.split('\n')[0].split(' ')[2];
-            a.download = name + "_v" + version + ".zip";
-        }
-    } catch (error) {
-        console.log(error);
+    if (patch_info[0]==="") {
+        a.download = name + ".zip";
+    } else {
+        a.download = name + "_v" + patch_info[0] + ".zip";
     }
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
 }
+

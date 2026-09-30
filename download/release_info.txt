@@ -1,5 +1,6 @@
---- Build 1.0.3.f ---
+--- Build 1.0.5.f ---
 
-Date: 20260924
-Commit: 9789c2d(main)
-        d94d68e8(script)
+Date: 20260930
+Commit: fdeb59b(main)
+        a20e218f(script)
+SHA3-256: 0ec55af539625a5e9b83a9583f93421f992e1b5d67c6a2599aff00f118276bda
