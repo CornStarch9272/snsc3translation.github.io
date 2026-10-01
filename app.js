@@ -36,8 +36,11 @@ function toggleSubMenu(button) {
     button.classList.toggle("rotate");
 }
 
+
 const patch_info = await getPatchInfo();
 const e = document.getElementById('hash');
+const e1 = document.getElementById('version');
+e1.innerText = patch_info[0];
 e.innerText = patch_info[1];
 
 async function downloadPatch(){
