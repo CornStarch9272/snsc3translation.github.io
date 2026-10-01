@@ -64,18 +64,3 @@ body:
       description: Leave blank if it's just "talk to this NPC"
     validations:
       required: false
-  - type: checkboxes
-    id: savestate
-    attributes:
-      label: Please link this issue in the Discord channel "#issue-links", and if necessary, attach the save state to it
-      options:
-        - label: I will do this.
-          required: true
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Click the "Label" button below to add a label. Zoom out or search if you can't see them!
-      description: Please do this!!!
-      options:
-        - label: I did this.
-          required: true
